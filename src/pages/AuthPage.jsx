@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { ArrowLeft, ArrowRight, Eye, EyeOff, Github, Linkedin, Mail, Phone, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Eye, EyeOff, Mail, Phone, ShieldCheck } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import Brand from '../components/Brand.jsx';
 import Topbar from '../components/Topbar.jsx';
 import Toast from '../components/Toast.jsx';
 import { useApp } from '../context/AppContext.jsx';
 
-function SocialButton({ icon, children, onClick }) {
-  return <button type="button" className="social-button" onClick={onClick}><span className="social-icon">{icon}</span><span>{children}</span></button>;
+function SocialButton({ children, onClick }) {
+  return <button type="button" className="social-button" onClick={onClick}><span>{children}</span></button>;
 }
 
 export default function AuthPage({ mode = 'login' }) {
@@ -44,10 +43,10 @@ export default function AuthPage({ mode = 'login' }) {
     <main className="auth-main">
       <div className="auth-back-row"><button className="back-link" onClick={() => navigate('/')}><ArrowLeft size={15} /> Back to workspace</button></div>
       <div className="auth-layout">
-        <section className="auth-aside"><div className="auth-aside-mark"><Brand onClick={() => navigate('/')} /></div><span className="eyebrow">ONE WORKSPACE. EVERY ASSISTANT.</span><h1>Keep your work.<br />Change your tools.</h1><p>Orcible keeps the important context close, so your ideas don’t have to start over every time you switch AI assistants.</p><div className="auth-aside-list"><span><ShieldCheck size={16} /> Your projects stay organised</span><span><ShieldCheck size={16} /> Context travels with your work</span><span><ShieldCheck size={16} /> Switch tools when you need to</span></div><div className="auth-aside-footer">© 2026 ORCIBLE</div></section>
+        <section className="auth-aside"><span className="eyebrow">ONE WORKSPACE. EVERY ASSISTANT.</span><h1>Keep your work.<br />Change your tools.</h1><p>Orcible keeps the important context close, so your ideas don’t have to start over every time you switch AI assistants.</p><div className="auth-aside-list"><span><ShieldCheck size={16} /> Your projects stay organised</span><span><ShieldCheck size={16} /> Context travels with your work</span><span><ShieldCheck size={16} /> Switch tools when you need to</span></div><div className="auth-aside-footer">© 2026 ORCIBLE</div></section>
         <section className="auth-card">
           <div className="auth-card-heading"><span className="eyebrow">{isRegister ? 'GET STARTED' : 'WELCOME BACK'}</span><h2>{isRegister ? 'Create your account' : 'Continue with Orcible'}</h2><p>{isRegister ? 'Set up your workspace in a few simple steps.' : 'Pick up right where you left off.'}</p></div>
-          <div className="social-stack"><SocialButton icon={<span className="google-g">G</span>} onClick={() => socialAction('Google')}>Continue with Google</SocialButton><SocialButton icon={<Github size={18} />} onClick={() => socialAction('GitHub')}>Continue with GitHub</SocialButton><SocialButton icon={<Linkedin size={18} />} onClick={() => socialAction('LinkedIn')}>Continue with LinkedIn</SocialButton></div>
+          <div className="social-stack"><SocialButton onClick={() => socialAction('Google')}>Continue with Google</SocialButton><SocialButton onClick={() => socialAction('Apple')}>Continue with Apple</SocialButton><SocialButton onClick={() => socialAction('GitHub')}>Continue with GitHub</SocialButton></div>
           <div className="auth-divider"><span>OR CONTINUE WITH {isRegister ? 'EMAIL' : 'YOUR ACCOUNT'}</span></div>
           <form className="auth-form" onSubmit={submit}>
             {isRegister && <><label className="field-label" htmlFor="full-name">Full name</label><input id="full-name" className="field-input" value={name} onChange={(event) => setName(event.target.value)} placeholder="Your name" autoComplete="name" /> </>}
