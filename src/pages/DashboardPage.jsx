@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ArrowDownToLine, ArrowUpRight, Check, Circle, FileText, Plus, Sparkles, Trash2, X } from 'lucide-react';
+import { ArrowDownToLine, ArrowUpRight, Check, Circle, FileText, Plus, Trash2, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext.jsx';
 import { buildContextMarkdown, providers } from '../data.js';
@@ -63,7 +63,7 @@ export default function DashboardPage() {
       <Sidebar onCreateProject={() => setNewProjectOpen(true)} />
       <main className="main-content"><div className="main-inner">
         <section className="welcome-section"><div className="welcome-copy"><div className="welcome-kicker"><span className="status-dot" /> YOUR AI WORKSPACE</div><h1>Your AI work,<br className="mobile-break" /> without losing context.</h1><p>Start once. Switch context. Keep context.</p></div>
-          <div className="welcome-actions"><button className="button button-outline" onClick={() => navigate('/guide')}>How it works <ArrowUpRight size={16} /></button><div className="project-summary"><span>{projects.length}</span><small>active projects</small></div></div>
+          <div className="welcome-actions"><div className="project-summary"><span>{projects.length}</span><small>active projects</small></div></div>
         </section>
 
         <div className="dashboard-grid">
@@ -85,7 +85,7 @@ export default function DashboardPage() {
           </section>
 
           <aside className="right-rail">
-            <section className="panel planner-card"><div className="planner-card-top"><span className="planner-symbol"><Sparkles size={18} /></span><span className="eyebrow">NUL.FOX AI BY ORCIBLE</span><span className="new-label">NEW</span></div><h2>Plan your next move.</h2><p>Turn a rough idea into a clear workflow, then keep every step connected.</p><button className="button button-dark button-full" onClick={() => navigate('/planner')}>Start planning <ArrowUpRight size={16} /></button><div className="planner-card-foot"><span>Built for momentum.</span><span>01 / 01</span></div></section>
+            <section className="panel planner-card"><div className="planner-card-top"><span className="eyebrow">CHAT WITH ORCIBLE</span><span className="new-label">NEW</span></div><h2>Plan your next move.</h2><p>Turn a rough idea into a clear workflow, then keep every step connected.</p><button className="button button-dark button-full" onClick={() => navigate('/planner')}>Start planning <ArrowUpRight size={16} /></button><div className="planner-card-foot"><span>Built for momentum.</span><span>01 / 01</span></div></section>
             <section className="panel tools-panel"><div className="tools-panel-heading"><div><span className="eyebrow">CHOOSE YOUR NEXT TOOL</span><h3>Continue your work</h3></div><span className="tool-count">{providers.length} tools</span></div><p className="tools-intro">Switch assistants without starting from zero.</p><div className="provider-grid">{providers.map((provider) => <button className="provider-card" key={provider.name} onClick={() => openProvider(provider)}><ProviderLogo provider={provider} size="lg" /><span>{provider.name}</span><ArrowUpRight className="provider-arrow" size={14} /></button>)}</div><div className="tools-note"><ArrowDownToLine size={14} /><span>Orcible downloads your context file and opens the selected tool.</span></div></section>
           </aside>
         </div>
