@@ -62,7 +62,7 @@ export default function DashboardPage() {
     <div className="dashboard-layout">
       <Sidebar onCreateProject={() => setNewProjectOpen(true)} />
       <main className="main-content"><div className="main-inner">
-        <section className="welcome-section"><div className="welcome-copy"><div className="welcome-kicker"><span className="status-dot" /> YOUR AI WORKSPACE</div><h1>Your AI work,<br className="mobile-break" /> without losing context.</h1><p>Start once. Switch context. Keep context.</p></div>
+        <section className="welcome-section"><div className="welcome-copy"><div className="welcome-kicker"><span className="status-dot" /> YOUR WORKSPACE</div><h1>Switch tools<br className="mobile-break" /> without losing context.</h1><p>Start once. Switch context. Keep context.</p></div>
           <div className="welcome-actions"><div className="project-summary"><span>{projects.length}</span><small>active projects</small></div></div>
         </section>
 
@@ -85,8 +85,16 @@ export default function DashboardPage() {
           </section>
 
           <aside className="right-rail">
-            <section className="panel planner-card"><div className="planner-card-top"><span className="eyebrow">CHAT WITH ORCIBLE</span><span className="new-label">NEW</span></div><h2>Plan your next move.</h2><p>Turn a rough idea into a clear workflow, then keep every step connected.</p><button className="button button-dark button-full" onClick={() => navigate('/planner')}>Start planning <ArrowUpRight size={16} /></button><div className="planner-card-foot"><span>Built for momentum.</span><span>01 / 01</span></div></section>
-            <section className="panel tools-panel"><div className="tools-panel-heading"><div><span className="eyebrow">CHOOSE YOUR NEXT TOOL</span><h3>Continue your work</h3></div><span className="tool-count">{providers.length} tools</span></div><p className="tools-intro">Switch assistants without starting from zero.</p><div className="provider-grid">{providers.map((provider) => <button className="provider-card" key={provider.name} onClick={() => openProvider(provider)}><ProviderLogo provider={provider} size="lg" /><span>{provider.name}</span><ArrowUpRight className="provider-arrow" size={14} /></button>)}</div><div className="tools-note"><ArrowDownToLine size={14} /><span>Orcible downloads your context file and opens the selected tool.</span></div></section>
+            <section className="panel chat-card">
+              <h2 className="chat-card-title">Chat with Orcible</h2>
+              <p>Turn a rough idea into a clear workflow, then keep every step connected.</p>
+              <button className="button button-dark button-full" onClick={() => navigate('/planner')}>Start planning <ArrowUpRight size={16} /></button>
+              <div className="tools-section">
+                <div className="tools-section-heading"><h3>Continue your work</h3><span className="tool-count">{providers.length} tools</span></div>
+                <div className="provider-list">{providers.map((provider) => <button className="provider-row" key={provider.name} onClick={() => openProvider(provider)}><ProviderLogo provider={provider} size="md" /><span>{provider.name}</span><ArrowUpRight className="provider-arrow" size={14} /></button>)}</div>
+                <div className="tools-note"><ArrowDownToLine size={14} /><span>Orcible downloads your context file and opens the selected tool.</span></div>
+              </div>
+            </section>
           </aside>
         </div>
         <footer className="main-footer"><span>© 2026 Orcible. All rights reserved.</span><span>Keep the context. Keep moving.</span></footer>
