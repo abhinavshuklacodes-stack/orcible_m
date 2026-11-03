@@ -84,18 +84,17 @@ export default function DashboardPage() {
             <div className="context-bar"><div className="context-bar-copy"><span className="context-icon"><FileText size={16} /></span><span><strong>{includedCount} tasks selected</strong><small>Your context file will include selected tasks only.</small></span></div><button className="button button-dark button-sm" onClick={exportContext} disabled={!includedCount}><ArrowDownToLine size={15} /> Export context</button></div>
           </section>
 
-          <aside className="right-rail">
-            <section className="panel chat-card">
-              <h2 className="chat-card-title">Chat with Orcible</h2>
-              <p>Turn a rough idea into a clear workflow, then keep every step connected.</p>
-              <button className="button button-dark button-full" onClick={() => navigate('/planner')}>Start planning <ArrowUpRight size={16} /></button>
-              <div className="tools-section">
-                <div className="tools-section-heading"><h3>Continue your work</h3><span className="tool-count">{providers.length} tools</span></div>
-                <div className="provider-list">{providers.map((provider) => <button className="provider-row" key={provider.name} onClick={() => openProvider(provider)}><ProviderLogo provider={provider} size="md" /><span>{provider.name}</span><ArrowUpRight className="provider-arrow" size={14} /></button>)}</div>
-                <div className="tools-note"><ArrowDownToLine size={14} /><span>Orcible downloads your context file and opens the selected tool.</span></div>
-              </div>
-            </section>
-          </aside>
+          <section className="panel chat-card">
+            <div className="chat-card-top">
+              <div><h2 className="chat-card-title">Plan your next move.</h2><p>Turn a rough idea into a clear workflow, then keep every step connected.</p></div>
+              <button className="button button-dark" onClick={() => navigate('/planner')}>Chat with Orcible <ArrowUpRight size={16} /></button>
+            </div>
+            <div className="tools-section">
+              <p className="tools-tagline">Direct jump on tools, in any conversation, and bring your context.</p>
+              <div className="provider-list">{providers.map((provider) => <button className="provider-row" key={provider.name} onClick={() => openProvider(provider)}><ProviderLogo provider={provider} size="lg" /><span>{provider.name}</span></button>)}</div>
+              <div className="tools-note"><ArrowDownToLine size={14} /><span>Orcible downloads your context file and opens the selected tool.</span></div>
+            </div>
+          </section>
         </div>
         <footer className="main-footer"><span>© 2026 Orcible. All rights reserved.</span><span>Keep the context. Keep moving.</span></footer>
       </div></main>
