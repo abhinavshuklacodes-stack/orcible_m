@@ -8,6 +8,7 @@ import Sidebar from '../components/Sidebar.jsx';
 import ProviderLogo from '../components/ProviderLogo.jsx';
 import Modal from '../components/Modal.jsx';
 import Toast from '../components/Toast.jsx';
+import SocialLinks from '../components/SocialLinks.jsx';
 
 function downloadContext(name, content) {
   const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
@@ -96,7 +97,7 @@ export default function DashboardPage() {
             </div>
           </section>
         </div>
-        <footer className="main-footer"><span>© 2026 Orcible. All rights reserved.</span><span>Keep the context. Keep moving.</span></footer>
+        <footer className="main-footer"><span>© 2026 Orcible. All rights reserved.</span><SocialLinks /><span>Keep the context. Keep moving.</span></footer>
       </div></main>
     </div>
     {newProjectOpen && <Modal title="Create a project" description="Give this workspace a name you’ll recognise." onClose={() => setNewProjectOpen(false)}><form className="modal-form" onSubmit={submitProject}><label className="field-label" htmlFor="project-name">Project name</label><input id="project-name" className="field-input" placeholder="e.g. Website redesign" value={projectName} onChange={(event) => setProjectName(event.target.value)} autoFocus maxLength={60} /><div className="modal-actions"><button type="button" className="button button-ghost" onClick={() => setNewProjectOpen(false)}>Cancel</button><button type="submit" className="button button-dark" disabled={!projectName.trim()}>Create project</button></div></form></Modal>}
