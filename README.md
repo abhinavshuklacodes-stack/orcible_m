@@ -27,6 +27,10 @@ Supplied logos are in `public/assets/`: `orcible.png`, `chatgpt.png`, `claude.jp
 
 Add the DeepSeek logo as `public/assets/deepseek.png`. Until it is added, the UI shows a letter fallback.
 
-## Backend integration notes
+## Backend
 
-This is a frontend implementation. Replace demo authentication with your authentication API and OAuth credentials. Connect the planner to your AI/workflow API. The context handoff is a generated project/task summary; it does not automatically import private chat history from external AI providers.
+Real accounts and a real database are wired in via [Supabase](https://supabase.com) (free tier — no credit card, no per-request API costs). Until it's configured, the app automatically falls back to the original local-only demo mode, so nothing breaks in the meantime.
+
+**See [BACKEND_SETUP.md](./BACKEND_SETUP.md) for the exact steps and what you need to provide.**
+
+Email/password sign-up and login are fully real once connected. The Google/Apple/GitHub buttons are still placeholders — wiring up real OAuth is a separate, optional step (GitHub's is free; Apple's requires a paid Apple Developer account).
